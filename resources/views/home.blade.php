@@ -4,9 +4,9 @@
 @endpush
 @section('content')
     <main>
-        <section>
+        <section class="about-section">
             <div class="container">
-                <header>
+                <div class="about-content">
                     <h1>Về 4S Design</h1>
                     <div class="intro-text">
                         <p>Cùng chung niềm đam mê và khát khao tạo ra những không gian kiến trúc tiện nghi và tinh tế.
@@ -14,7 +14,8 @@
                             công các công trình kiến trúc – nội thất với châm ngôn <span class="highlight">không ngừng nỗ lực</span>
                             để...</p>
                     </div>
-                </header>
+                </div>
+
                 {{--            Phần main--}}
                 <div class="services">
                     <div class="service-card">
