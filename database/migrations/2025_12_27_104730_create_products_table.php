@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->enum('category',['account','product'])->default('product');
             $table->decimal('price',10,2);
+            $table->decimal('sale_price',10,2)->nullable();
             $table->text('description')->nullable();
             $table->enum('status',['active','inactive'])->default('active');
             $table->integer('quantity')->default(0);
