@@ -827,6 +827,11 @@ tbody tr:hover {
     color: #1a73e8;
 }
 
+.sale_price{
+    font-weight: 600;
+    color: #1a73e8;
+}
+
 .actions {
     display: flex;
     gap: 8px;
@@ -2560,3 +2565,6 @@ body {
     }
 }
 
+.logout-menu {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); ;
+}

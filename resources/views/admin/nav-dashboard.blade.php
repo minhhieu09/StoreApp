@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">cd
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </head>
 <body>
 <!-- Sidebar -->
@@ -61,6 +61,17 @@
                 </svg>
                 Cài đặt
             </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                <svg class="icon" viewBox="0 0 24 24" style="fill: white">
+                    <path d="M12 2a5 5 0 100 10 5 5 0 000-10zM4 20a8 8 0 0116 0v1H4v-1z"/>
+                </svg>
+                Admin
+            </a>
+            <ul  class="logout-menu dropdown-menu">
+                <li class="menu-item"><a class="dropdown-item" href="#">Logout</a></li>
+            </ul>
         </li>
     </ul>
 </div>

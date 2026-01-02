@@ -41,6 +41,10 @@ return [
             'provider' => 'users',
         ],
     ],
+    'admin' => [
+        'driver' => 'session',
+        'provider' => 'admins',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -65,6 +69,11 @@ return [
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
 
+//        Them Provider cho admins
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ]
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -97,6 +106,14 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+
+/*//        Them Password reset cho admin*/
+        'admin' => [
+            'provider' => 'users',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ]
     ],
 
     /*

@@ -43,6 +43,7 @@
                 <th>Sản phẩm</th>
                 <th>Danh mục</th>
                 <th>Giá</th>
+                <th>Giá khuyến mãi</th>
                 <th>Trạng thái</th>
                 <th>Ngày tạo</th>
                 <th>Thao tác</th>
@@ -60,6 +61,7 @@
                     </td>
                     <td><span class="badge badge-product">Sản phẩm</span></td>
                     <td><span class="price">{{$item->price}}</span></td>
+                    <td><span class="sale_price">{{$item->sale_price}}</span></td>
                     <td><span class="badge badge-inactive">{{$item->status}}</span></td>
                     <td>{{$item->created_at}}</td>
                     <td>

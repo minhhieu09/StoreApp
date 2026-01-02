@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BillController;
 use App\Http\Controllers\ProductController;
@@ -13,6 +14,13 @@ Route::get('/', function () {
 Route::get('/category',[CategoryController::class,'index']);
 Route::get('/detail-bill',[BillController::class,'detailBill']);
 Route::get('/product',[ProductController::class,'product']);
+
+/*Admin Login*/
+Route::get('/login', [AdminController::class, 'showLogin'])
+    ->name('admin.login');
+
+Route::post('/login', [AdminController::class, 'login'])
+    ->name('admin.login.submit');
 
 /*Dashboard*/
 Route::get('/admin-product',[DashboardController::class,'adminProduct'])->name('adminProduct');
