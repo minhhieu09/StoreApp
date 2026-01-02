@@ -53,7 +53,7 @@
                 <tr>
                     <td>
                         <div class="product-title">
-                            <img src="https://via.placeholder.com/60/f093fb/ffffff?text=📁" alt="Product"
+                            <img src="{{ asset('storage/' . $item->image) }}" alt="Product"
                                  class="product-image">
                             <span class="product-title-text">{{$item->name}}</span>
                         </div>

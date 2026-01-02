@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <form method="post" action="{{route('storeProduct')}}" class="form-container" id="addProductForm">
+    <form method="post" action="{{route('storeProduct')}}" class="form-container" id="addProductForm" enctype="multipart/form-data">
         <!-- Basic Information -->
         @csrf
         <div class="form-section">
@@ -58,7 +58,7 @@
                 <p class="upload-text">Nhấn để tải ảnh lên</p>
                 <p class="upload-hint">PNG, JPG, GIF tối đa 5MB</p>
             </div>
-            <input type="file" id="imageUpload" multiple accept="image/*" style="display: none;">
+            <input type="file" id="imageUpload" multiple accept="image/*" style="display: none;" name="image">
 
             <div class="image-preview" id="imagePreview">
                 <!-- Preview images will appear here -->
@@ -95,3 +95,174 @@
     </form>
 </main>
 @endsection
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const imageUpload = document.getElementById('imageUpload');
+        const imagePreview = document.getElementById('imagePreview');
+
+        if (!imageUpload || !imagePreview) {
+            console.error('Không tìm thấy elements');
+            return;
+        }
+
+        imageUpload.addEventListener('change', function(e) {
+            const files = e.target.files;
+            imagePreview.innerHTML = '';
+
+            if (files.length === 0) return;
+
+            Array.from(files).forEach((file) => {
+                // Kiểm tra file có phải là ảnh không
+                if (!file.type.startsWith('image/')) {
+                    alert(`File ${file.name} không phải là ảnh!`);
+                    return;
+                }
+
+                // Kiểm tra kích thước file (5MB)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert(`File ${file.name} vượt quá 5MB!`);
+                    return;
+                }
+
+                // Tạo FileReader để đọc file
+                const reader = new FileReader();
+
+                reader.onload = function(event) {
+                    // Tạo wrapper cho mỗi ảnh
+                    const imageWrapper = document.createElement('div');
+                    imageWrapper.className = 'image-item';
+
+                    // Tạo img element
+                    const img = document.createElement('img');
+                    img.src = event.target.result;
+                    img.alt = file.name;
+
+                    // Tạo nút xóa
+                    const removeBtn = document.createElement('button');
+                    removeBtn.className = 'remove-image';
+                    removeBtn.innerHTML = '&times;';
+                    removeBtn.type = 'button';
+                    removeBtn.onclick = function() {
+                        imageWrapper.remove();
+                        // Reset input nếu không còn ảnh nào
+                        if (imagePreview.children.length === 0) {
+                            imageUpload.value = '';
+                        }
+                    };
+
+                    // Tạo tên file
+                    const fileName = document.createElement('p');
+                    fileName.className = 'image-name';
+                    fileName.textContent = file.name;
+
+                    // Ghép các element
+                    imageWrapper.appendChild(img);
+                    imageWrapper.appendChild(removeBtn);
+                    imageWrapper.appendChild(fileName);
+                    imagePreview.appendChild(imageWrapper);
+                };
+
+                // Đọc file dưới dạng Data URL
+                reader.readAsDataURL(file);
+            });
+        });
+    });
+</script>
+
+<style>
+    .image-preview {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .image-item {
+        position: relative;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 10px;
+        background: #f9f9f9;
+        transition: all 0.3s ease;
+    }
+
+    .image-item:hover {
+        border-color: #007bff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .image-item img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 4px;
+        display: block;
+    }
+
+    .remove-image {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(255, 0, 0, 0.8);
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        line-height: 1;
+    }
+
+    .remove-image:hover {
+        background: rgba(255, 0, 0, 1);
+        transform: scale(1.1);
+    }
+
+    .image-name {
+        margin: 8px 0 0 0;
+        font-size: 12px;
+        color: #666;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .image-upload-area {
+        border: 2px dashed #ccc;
+        border-radius: 8px;
+        padding: 40px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .image-upload-area:hover {
+        border-color: #007bff;
+        background: #f0f8ff;
+    }
+
+    .upload-icon {
+        font-size: 48px;
+        margin-bottom: 10px;
+    }
+
+    .upload-text {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        margin: 10px 0 5px 0;
+    }
+
+    .upload-hint {
+        font-size: 13px;
+        color: #666;
+        margin: 0;
+    }
+</style>
