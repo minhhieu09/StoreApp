@@ -324,7 +324,7 @@
             Email hoặc mật khẩu không chính xác!
         </div>
 
-        <form id="loginForm" method="POST" action="/admin/login">
+        <form id="loginForm" method="POST" action="{{ route('admin.login') }}">
             @csrf
             <div class="form-group">
                 <label class="form-label">Email hoặc Tên đăng nhập</label>
@@ -381,19 +381,19 @@
     }
 
     // Xử lý form submit (demo)
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        // Demo: hiển thị lỗi
-        const errorMessage = document.getElementById('errorMessage');
-        errorMessage.classList.add('show');
-
-        setTimeout(() => {
-            errorMessage.classList.remove('show');
-        }, 3000);
-
-        // Trong thực tế, bạn sẽ submit form hoặc gọi API ở đây
-    });
+    // document.getElementById('loginForm').addEventListener('submit', function(e) {
+    //     e.preventDefault();
+    //
+    //     // Demo: hiển thị lỗi
+    //     const errorMessage = document.getElementById('errorMessage');
+    //     errorMessage.classList.add('show');
+    //
+    //     setTimeout(() => {
+    //         errorMessage.classList.remove('show');
+    //     }, 3000);
+    //
+    //     // Trong thực tế, bạn sẽ submit form hoặc gọi API ở đây
+    // });
 </script>
 </body>
 </html>

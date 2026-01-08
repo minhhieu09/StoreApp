@@ -40,11 +40,12 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
     ],
-    'admin' => [
-        'driver' => 'session',
-        'provider' => 'admins',
-    ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -70,7 +71,7 @@ return [
         ],
 
 //        Them Provider cho admins
-        'admin' => [
+        'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ]
@@ -108,8 +109,8 @@ return [
         ],
 
 /*//        Them Password reset cho admin*/
-        'admin' => [
-            'provider' => 'users',
+        'admins' => [
+            'provider' => 'admins',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

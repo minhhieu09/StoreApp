@@ -74,115 +74,19 @@
 
                 <div class="slider-container">
                     <div class="products-grid" id="productsSlider">
-                        <div class="product-card">
-                            <div class="product-image product-1">
-                                <span style="font-size: 80px;">✨</span>
+                        @foreach($products as $item)
+                            <div class="product-card">
+                                <div class="product-image product-2">
+                                    <img src="{{ asset('storage/' . $item->image) }}" alt="">
+                                </div>
+                                <div class="product-info">
+                                    <div class="badge">SẢN PHẨM</div>
+                                    <h3>{{$item->name}}</h3>
+                                    <div class="product-price">{{$item->price}}</div>
+                                </div>
                             </div>
-                            <div class="product-info">
-                                <div class="badge">TÀI KHOẢN</div>
-                                <h3>Tài khoản Google Gemini Pro, Plus và Ultra Premium</h3>
-                                <div class="product-price">299.000 VNĐ</div>
-                            </div>
-                        </div>
+                        @endforeach
 
-                        <div class="product-card">
-                            <div class="product-image product-2">
-                                <span style="font-size: 80px;">📁</span>
-                            </div>
-                            <div class="product-info">
-                                <div class="badge">SẢN PHẨM</div>
-                                <h3>Mua dung lượng Google Drive (12 tháng)</h3>
-                                <div class="product-price">150.000 VNĐ</div>
-                            </div>
-                        </div>
-
-                        <div class="product-card">
-                            <div class="product-image product-2">
-                                <span style="font-size: 80px;">📁</span>
-                            </div>
-                            <div class="product-info">
-                                <div class="badge">SẢN PHẨM</div>
-                                <h3>Mua dung lượng Google Drive (12 tháng)</h3>
-                                <div class="product-price">150.000 VNĐ</div>
-                            </div>
-                        </div>
-
-                        <div class="product-card">
-                            <div class="product-image product-2">
-                                <span style="font-size: 80px;">📁</span>
-                            </div>
-                            <div class="product-info">
-                                <div class="badge">SẢN PHẨM</div>
-                                <h3>Mua dung lượng Google Drive (12 tháng)</h3>
-                                <div class="product-price">150.000 VNĐ</div>
-                            </div>
-                        </div>
-
-                        <div class="product-card">
-                            <div class="product-image product-2">
-                                <span style="font-size: 80px;">📁</span>
-                            </div>
-                            <div class="product-info">
-                                <div class="badge">SẢN PHẨM</div>
-                                <h3>Mua dung lượng Google Drive (12 tháng)</h3>
-                                <div class="product-price">150.000 VNĐ</div>
-                            </div>
-                        </div>
-
-                        <div class="product-card">
-                            <div class="product-image product-2">
-                                <span style="font-size: 80px;">📁</span>
-                            </div>
-                            <div class="product-info">
-                                <div class="badge">SẢN PHẨM</div>
-                                <h3>Mua dung lượng Google Drive (12 tháng)</h3>
-                                <div class="product-price">150.000 VNĐ</div>
-                            </div>
-                        </div>
-
-                        <div class="product-card">
-                            <div class="product-image product-2">
-                                <span style="font-size: 80px;">📁</span>
-                            </div>
-                            <div class="product-info">
-                                <div class="badge">SẢN PHẨM</div>
-                                <h3>Mua dung lượng Google Drive (12 tháng)</h3>
-                                <div class="product-price">150.000 VNĐ</div>
-                            </div>
-                        </div>
-
-                        <div class="product-card">
-                            <div class="product-image product-2">
-                                <span style="font-size: 80px;">📁</span>
-                            </div>
-                            <div class="product-info">
-                                <div class="badge">SẢN PHẨM</div>
-                                <h3>Mua dung lượng Google Drive (12 tháng)</h3>
-                                <div class="product-price">150.000 VNĐ</div>
-                            </div>
-                        </div>
-
-                        <div class="product-card">
-                            <div class="product-image product-2">
-                                <span style="font-size: 80px;">📁</span>
-                            </div>
-                            <div class="product-info">
-                                <div class="badge">SẢN PHẨM</div>
-                                <h3>Mua dung lượng Google Drive (12 tháng)</h3>
-                                <div class="product-price">150.000 VNĐ</div>
-                            </div>
-                        </div>
-
-                        <div class="product-card">
-                            <div class="product-image product-2">
-                                <span style="font-size: 80px;">📁</span>
-                            </div>
-                            <div class="product-info">
-                                <div class="badge">SẢN PHẨM</div>
-                                <h3>Mua dung lượng Google Drive (12 tháng)</h3>
-                                <div class="product-price">150.000 VNĐ</div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 

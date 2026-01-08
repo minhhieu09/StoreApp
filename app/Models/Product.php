@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Tests\Integration\Database\EloquentHasManyThroughTest\Category;
 
 class Product extends Model
 {
     //
     protected $fillable = [
         'name',
+        'category_id',
         'description',
         'price',
         'sale_price',
@@ -58,5 +60,9 @@ class Product extends Model
             return $query->where('name','like','%'.$search.'%');
         }
         return $query;
+    }
+
+    public function category(){
+        return $this->hasOne(CategoryModel::class, 'id', 'category_id');
     }
 }

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\CategoryModel;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Tests\Integration\Database\EloquentHasManyThroughTest\Category;
 
 class DashboardController extends Controller
 {
@@ -13,23 +15,28 @@ class DashboardController extends Controller
     public function adminProduct(Request $request)
     {
         $product = Product::query()
+            ->with(['category'])
             ->search($request->search)
-            ->category($request->category)
+            ->when($request->category, function ($q) use ($request) {
+                $q->where('category_id', $request->category);
+            })
             ->status($request->status)
             ->orderBy('created_at', 'desc')
             ->paginate(10);
-
-        return view('admin.product.index', compact('product'));
+        $categories = CategoryModel::all();
+        return view('admin.product.index', compact('product', 'categories'));
     }
 
     public function create(){
-        return view('admin.product.create');
+        $categories = CategoryModel::all();
+        return view('admin.product.create', compact('categories'));
     }
 
     public function store(Request $request){
         $validated = $request->all();
         $path = $request->file('image')->store('products', 'public');
         $validated['image'] = $path;
+        $validated['category_id'] = $request->category_id;
 
         Product::create($validated);
 

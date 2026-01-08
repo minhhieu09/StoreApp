@@ -776,9 +776,9 @@ tbody tr:hover {
     background: #f8f9fa;
 }
 
-.product-image {
-    width: 60px;
-    height: 60px;
+.product-image img {
+    width: 100%;
+    height: 100%;
     border-radius: 8px;
     object-fit: cover;
 }
@@ -1178,6 +1178,7 @@ tbody tr:hover {
 .product-image {
     width: 100%;
     aspect-ratio: 1;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;

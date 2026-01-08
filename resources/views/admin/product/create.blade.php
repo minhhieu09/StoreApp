@@ -27,6 +27,15 @@
                     <input type="text" class="form-input" placeholder="Nhập tên sản phẩm" name="name" >
                 </div>
             </div>
+            <div style="padding-bottom: 15px">
+                <h6>Loại sản phẩm</h6>
+                <select class="custom-select" name="category_id">
+                    @foreach($categories as $item)
+                        <option value="{{$item->id}}">{{$item->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+
 
             <div class="form-row">
                 <div class="form-group">

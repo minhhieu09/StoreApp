@@ -18,16 +18,24 @@
     <!-- Filters -->
     <div class="filters">
         <div class="search-box">
-            <input type="text" placeholder="Tìm kiếm sản phẩm..." id="searchInput">
+            <input type="text"
+                   placeholder="Tìm kiếm sản phẩm..."
+                   id="searchInput"
+                   value="{{ request('search') }}">
             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
             </svg>
         </div>
         <select class="filter-select" id="categoryFilter">
             <option value="">Tất cả danh mục</option>
-            <option value="account">Tài khoản</option>
-            <option value="product">Sản phẩm</option>
+            @foreach($categories as $item)
+                <option value="{{ $item->id }}"
+                    {{ request('category') == $item->id ? 'selected' : '' }}>
+                    {{ $item->name }}
+                </option>
+            @endforeach
         </select>
+
         <select class="filter-select" id="statusFilter">
             <option value="">Tất cả trạng thái</option>
             <option value="active">Hoạt động</option>
@@ -180,4 +188,48 @@
         </div>
     </div>
 </div>
+<script>
+    const searchInput   = document.getElementById('searchInput');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const statusFilter   = document.getElementById('statusFilter');
+
+    function applyFilter() {
+        const params = new URLSearchParams(window.location.search);
+
+        // search
+        if (searchInput.value.trim() !== '') {
+            params.set('search', searchInput.value);
+        } else {
+            params.delete('search');
+        }
+
+        // category
+        if (categoryFilter.value !== '') {
+            params.set('category', categoryFilter.value);
+        } else {
+            params.delete('category');
+        }
+
+        // status
+        if (statusFilter.value !== '') {
+            params.set('status', statusFilter.value);
+        } else {
+            params.delete('status');
+        }
+
+        window.location.href = window.location.pathname + '?' + params.toString();
+    }
+
+    // Change event
+    categoryFilter.addEventListener('change', applyFilter);
+    statusFilter.addEventListener('change', applyFilter);
+
+    // Search: Enter key
+    searchInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+            applyFilter();
+        }
+    });
+</script>
+
 @endsection
