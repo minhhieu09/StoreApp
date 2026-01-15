@@ -14,23 +14,9 @@ Route::get('/', function () {
 
 Route::get('/category',[CategoryController::class,'index']);
 Route::get('/detail-bill',[BillController::class,'detailBill']);
-Route::get('/product',[ProductController::class,'product']);
+Route::get('/product',[ProductController::class,'product'])->name('product');
+Route::get('/product-detail/{id}',[CategoryController::class,'productDetail'])->name('product.detail');
 
-///*Admin Login*/
-//Route::get('/login', [AdminController::class, 'showLogin'])
-//    ->name('admin.login');
-//
-//Route::post('/login', [AdminController::class, 'login'])
-//    ->name('admin.login.submit');
-//Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout.submit');
-//
-///*Dashboard*/
-//Route::get('/admin-product',[DashboardController::class,'adminProduct'])->name('adminProduct');
-//Route::get('/create',[DashboardController::class,'create'])->name('createProduct');
-//Route::post('/store',[DashboardController::class,'store'])->name('storeProduct');
-//Route::get('/edit/{id}',[DashboardController::class,'edit'])->name('editProduct');
-//Route::post('/update/{id}',[DashboardController::class,'update'])->name('updateProduct');
-//Route::get('/delete/{id}',[DashboardController::class,'delete'])->name('deleteProduct');
 
 /*==============================================
   ADMIN ROUTES

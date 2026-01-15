@@ -55,49 +55,46 @@
             </div>
         </div>
 
-
-        <!-- Google Accounts Section -->
-        <div class="section">
-            <div class="section-header">
-                <h2>Tài khoản Google</h2>
-                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path d="M9 5l7 7-7 7"/>
-                </svg>
-            </div>
-
-            <div class="slider-wrapper">
-                <button class="nav-button prev" id="prevBtn">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+        @foreach($products as $item)
+            <div class="section">
+                <div class="section-header">
+                    <h2>{{$item->category_relation->name ?? ""}}</h2>
+                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M9 5l7 7-7 7"/>
                     </svg>
-                </button>
-
-                <div class="slider-container">
-                    <div class="products-grid" id="productsSlider">
-                        @foreach($products as $item)
-                            <div class="product-card">
-                                <div class="product-image product-2">
-                                    <img src="{{ asset('storage/' . $item->image) }}" alt="">
-                                </div>
-                                <div class="product-info">
-                                    <div class="badge">SẢN PHẨM</div>
-                                    <h3>{{$item->name}}</h3>
-                                    <div class="product-price">{{$item->price}}</div>
-                                </div>
-                            </div>
-                        @endforeach
-
-                    </div>
                 </div>
+                <div class="slider-wrapper">
+                    <button class="nav-button prev" id="prevBtn">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                        </svg>
+                    </button>
+                    <div class="slider-container">
+                        <div class="products-grid" id="productsSlider">
+                                <a href="{{ route('product.detail', $item->id) }}" class="product-card">
+                                    <div class="product-image product-2">
+                                        <img src="{{ asset('storage/' . $item->image) }}" alt="">
+                                    </div>
+                                    <div class="product-info">
+                                        <div class="badge">{{$item->category_relation->name ?? ""}}</div>
+                                        <h3>{{$item->name}}</h3>
+                                        <div class="product-price">{{$item->price}}</div>
+                                    </div>
+                                </a>
+                        </div>
+                    </div>
 
-                <button class="nav-button next" id="nextBtn">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-                    </svg>
-                </button>
+                    <button class="nav-button next" id="nextBtn">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
-        </div>
+        @endforeach
     </div>
+
+
 
     <script>
         const productsSlider = document.getElementById('productsSlider');

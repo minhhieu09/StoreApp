@@ -15,7 +15,7 @@ class DashboardController extends Controller
     public function adminProduct(Request $request)
     {
         $product = Product::query()
-            ->with(['category'])
+            ->with(['category_relation'])
             ->search($request->search)
             ->when($request->category, function ($q) use ($request) {
                 $q->where('category_id', $request->category);

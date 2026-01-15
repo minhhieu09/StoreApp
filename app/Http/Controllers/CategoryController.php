@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
     //
-    public function index()
+    public function productDetail($id)
     {
-        return view('category');
+        $item = Product::findOrFail($id);
+        return view('category', compact('item'));
     }
 }

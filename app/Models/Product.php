@@ -62,7 +62,7 @@ class Product extends Model
         return $query;
     }
 
-    public function category(){
+    public function category_relation(){
         return $this->hasOne(CategoryModel::class, 'id', 'category_id');
     }
 }

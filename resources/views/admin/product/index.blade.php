@@ -67,7 +67,7 @@
                             <span class="product-title-text">{{$item->name}}</span>
                         </div>
                     </td>
-                    <td><span class="badge badge-product">Sản phẩm</span></td>
+                    <td><span class="badge badge-product">{{$item->category_relation->name ?? ""}}</span></td>
                     <td><span class="price">{{$item->price}}</span></td>
                     <td><span class="sale_price">{{$item->sale_price}}</span></td>
                     <td><span class="badge badge-inactive">{{$item->status}}</span></td>

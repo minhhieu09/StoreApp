@@ -6,38 +6,47 @@
     <div class="container-detail">
         <div class="product-images">
             <div class="main-image">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='800'%3E%3Crect width='600' height='800' fill='%23e8e8e8'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-size='24' fill='%23999'%3EProduct Image%3C/text%3E%3C/svg%3E" alt="Long Sleeve Overshirt">
+                <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}" width="600" height="800">
                 <div class="image-actions">
                     <button class="action-btn">↗</button>
                     <button class="action-btn">♡</button>
                 </div>
             </div>
-            <div class="thumbnails">
-                <div class="thumbnail active">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='100'%3E%3Crect width='80' height='100' fill='%23e8e8e8'/%3E%3C/svg%3E" alt="Thumbnail 1">
-                </div>
-                <div class="thumbnail">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='100'%3E%3Crect width='80' height='100' fill='%23e8e8e8'/%3E%3C/svg%3E" alt="Thumbnail 2">
-                </div>
-                <div class="thumbnail">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='100'%3E%3Crect width='80' height='100' fill='%23e8e8e8'/%3E%3C/svg%3E" alt="Thumbnail 3">
-                </div>
-                <div class="thumbnail">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='100'%3E%3Crect width='80' height='100' fill='%23e8e8e8'/%3E%3C/svg%3E" alt="Thumbnail 4">
-                </div>
-                <div class="thumbnail">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='100'%3E%3Crect width='80' height='100' fill='%23e8e8e8'/%3E%3C/svg%3E" alt="Thumbnail 5">
+            <hr>
+            <div>
+                <h5>Điểm nổi bật</h5>
+                <div class="highlights">
+                    <div class="item">
+                        <div class="icon"></div>
+                        <div class="text">Hoàn toàn ổn định, không lỗi</div>
+                    </div>
+
+                    <div class="item">
+                        <div class="icon"></div>
+                        <div class="text">Hỗ trợ 24/7 qua Fanpage</div>
+                    </div>
+
+                    <div class="item">
+                        <div class="icon"></div>
+                        <div class="text">Bảo hành 1-1</div>
+                    </div>
+
+                    <div class="item">
+                        <div class="icon"></div>
+                        <div class="text">KHÔNG CRACK, KHÔNG SHARE</div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="product-info">
-            <div class="brand">Adobe Creative Cloud</div>
-            <h1>Adobe Creative Cloud</h1>
+            <div class="brand">
+                <a href="{{route('product')}}" style="text-decoration: none ; color: #666666" >Trang chủ / </a>{{$item->category_relation->name ?? ""}}</div>
+            <h1>{{$item->name}}</h1>
 
             <div class="price-section">
-                <span class="old-price">1.990.000đ VNĐ</span>
-                <span class="current-price">540.000đ VNĐ</span>
+                <span class="old-price">{{$item->price}} VNĐ</span>
+                <span class="current-price">{{$item->sale_price}} VNĐ</span>
             </div>
 
             <div class="rating">
@@ -47,7 +56,7 @@
 
             <div class="description">
                 <h3>Mô tả:</h3>
-                <p>Hàng trial fake Business cực uy tín <span class="see-more">See More...</span></p>
+                <p>{{$item->description}} <span class="see-more">See More...</span></p>
             </div>
 
 
@@ -69,64 +78,14 @@
             </div>
 
             <div class="delivery-info">
-                Zalo: 0332920296
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check mr-2 size-6 shrink-0 text-gray-400 group-hover:text-gray-500" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                Bảo hành tài khoản Full Time
             </div>
+
         </div>
     </div>
 
-    <div class="related-products">
-        <div class="related-header">
-            <h2>Sản phẩm liên quan</h2>
-            <a href="#" class="view-all">Xem Thêm</a>
-        </div>
-        <div class="product-grid">
-            <div class="product-card">
-                <div class="product-card-image">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect width='300' height='400' fill='%23e8e8e8'/%3E%3C/svg%3E" alt="Product">
-                </div>
-                <div class="product-card-info">
-                    <h3>Capcut Pro</h3>
-                    <div class="price">500.000đ</div>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-card-image">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect width='300' height='400' fill='%23e8e8e8'/%3E%3C/svg%3E" alt="Product">
-                </div>
-                <div class="product-card-info">
-                    <h3>Capcut Pro</h3>
-                    <div class="price">500.000đ</div>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-card-image">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect width='300' height='400' fill='%23e8e8e8'/%3E%3C/svg%3E" alt="Product">
-                </div>
-                <div class="product-card-info">
-                    <h3>Capcut Pro</h3>
-                    <div class="price">500.000đ</div>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-card-image">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect width='300' height='400' fill='%23e8e8e8'/%3E%3C/svg%3E" alt="Product">
-                </div>
-                <div class="product-card-info">
-                    <h3>Capcut Pro</h3>
-                    <div class="price">500.000đ</div>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-card-image">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect width='300' height='400' fill='%23e8e8e8'/%3E%3C/svg%3E" alt="Product">
-                </div>
-                <div class="product-card-info">
-                    <h3>Capcut Pro</h3>
-                    <div class="price">500.000đ</div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <script>
         // Size selection
