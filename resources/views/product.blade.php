@@ -78,7 +78,14 @@
                                     <div class="product-info">
                                         <div class="badge">{{$item->category_relation->name ?? ""}}</div>
                                         <h3>{{$item->name}}</h3>
-                                        <div class="product-price">{{$item->price}}</div>
+                                        <div class="product-price">
+                                            @if($item->product_variant_min_sale_price == $item->product_variant_max_sale_price)
+                                                {{ number_format($item->product_variant_min_sale_price) }} đ
+                                            @else
+                                                {{ number_format($item->product_variant_min_sale_price) }} -
+                                                {{ number_format($item->product_variant_max_sale_price) }} đ
+                                            @endif
+                                        </div>
                                     </div>
                                 </a>
                         </div>

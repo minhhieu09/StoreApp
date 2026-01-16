@@ -65,4 +65,8 @@ class Product extends Model
     public function category_relation(){
         return $this->hasOne(CategoryModel::class, 'id', 'category_id');
     }
+
+    public function product_variant(){
+        return $this->hasMany(ProductVariants::class, 'product_id', 'id');
+    }
 }

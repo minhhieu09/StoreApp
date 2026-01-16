@@ -36,20 +36,49 @@
                 </select>
             </div>
 
+            <div id="price-wrapper">
+                <div class="price-item">
+                    <div style="padding-bottom: 15px">
+                        <h6>Thời gian</h6>
+                        <select class="custom-select" name="duration[]">
+                            <option value="1">1 Tháng</option>
+                            <option value="3">3 Tháng</option>
+                            <option value="12">12 Tháng</option>
+                        </select>
+                    </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label class="form-label required">Giá (VNĐ)</label>
-                    <input type="number" class="form-input" placeholder="0" name="price">
-                    <span class="helper-text">Nhập giá bán sản phẩm</span>
+                    <div style="padding-bottom: 15px">
+                        <h6>Loại tài khoản</h6>
+                        <select class="custom-select" name="type[]">
+                            <option value="shared">Dùng chung</option>
+                            <option value="private">Dùng riêng</option>
+                            <option value="owner">Chính chủ</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label required">Giá (VNĐ)</label>
+                            <input type="number" class="form-input" name="price[]" placeholder="0">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Giá Khuyến Mãi (VNĐ)</label>
+                            <input type="number" class="form-input" name="sale_price[]" placeholder="0">
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-remove" onclick="removeItem(this)">
+                        ❌ Xóa
+                    </button>
+
+                    <hr>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Giá Khuyến Mãi (VNĐ)</label>
-                    <input type="number" class="form-input" placeholder="0" name="sale_price">
-                    <span class="helper-text">Để trống nếu không có khuyến mãi</span>
-                </div>
+
             </div>
-
+            <button type="button" class="btn btn-primary" onclick="addPriceItem()">
+                ➕ Thêm gói giá
+            </button>
             <div class="form-row full">
                 <div class="form-group">
                     <label class="form-label">Mô Tả Chi Tiết</label>
@@ -177,6 +206,25 @@
             });
         });
     });
+    function addPriceItem() {
+        const wrapper = document.getElementById('price-wrapper');
+        const firstItem = wrapper.querySelector('.price-item');
+
+        const clone = firstItem.cloneNode(true);
+
+        // Clear value khi clone
+        clone.querySelectorAll('input').forEach(input => input.value = '');
+        clone.querySelectorAll('select').forEach(select => select.selectedIndex = 0);
+
+        wrapper.appendChild(clone);
+    }
+
+    function removeItem(btn) {
+        const wrapper = document.getElementById('price-wrapper');
+        if (wrapper.children.length > 1) {
+            btn.closest('.price-item').remove();
+        }
+    }
 </script>
 
 <style>

@@ -1589,7 +1589,7 @@ h1 {
     flex-wrap: wrap;
 }
 
-.size-option {
+.duration-option {
     padding: 12px 20px;
     border: 1px solid #ddd;
     background: #fff;
@@ -1597,6 +1597,10 @@ h1 {
     border-radius: 4px;
     font-size: 14px;
     transition: all 0.3s;
+}
+
+.duration-option.active{
+    background: #6c757d;
 }
 
 .size-option:hover {
