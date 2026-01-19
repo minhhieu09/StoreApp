@@ -59,13 +59,17 @@ class DashboardController extends Controller
     }
 
     public function edit($id){
-        $item = Product::findOrFail($id);
-        return view('admin.product.edit', compact('item'));
+        $item = Product::query()
+            ->where('id', $id)
+            ->with(['category_relation', 'product_variant'])
+            ->first();
+        $categories = CategoryModel::all();
+        return view('admin.product.edit', compact('item', 'categories'));
     }
 
     public function update(Request $request, $id){
         $item = Product::findOrFail($id);
-        $data = $request->all();
+        $data = $request->except(['duration', 'type', 'price', 'sale_price']);
 
         if ($request->hasFile('new_images')) {
             // Xóa ảnh cũ nếu tồn tại
@@ -79,6 +83,23 @@ class DashboardController extends Controller
         }
 
         $item->update($data);
+        foreach ($request->duration as $key => $value) {
+            if (!empty($requet->variant_id[$key])){
+                $item->product_variant()->where('id', $requet->variant_id[$key])->update([
+                    'duration' => $value,
+                    'type' => $request->type[$key],
+                    'price' => $request->price[$key],
+                    'sale_price' => $request->sale_price[$key] ?? null,
+                ]);
+            }else{
+                $item->product_variant()->create([
+                    'duration' => $value,
+                    'type' => $request->type[$key],
+                    'price' => $request->price[$key],
+                    'sale_price' => $request->sale_price[$key] ?? null,
+                ]);
+            }
+        }
         return redirect()->route('adminProduct')->with('success', 'Product created successfully');
     }
 
