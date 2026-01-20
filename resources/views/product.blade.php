@@ -55,10 +55,10 @@
             </div>
         </div>
 
-        @foreach($products as $item)
+        @foreach($products as $categoryId => $items)
             <div class="section">
                 <div class="section-header">
-                    <h2>{{$item->category_relation->name ?? ""}}</h2>
+                    <h2>{{$items->first()->category_relation->name ?? ""}}</h2>
                     <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path d="M9 5l7 7-7 7"/>
                     </svg>
@@ -71,6 +71,7 @@
                     </button>
                     <div class="slider-container">
                         <div class="products-grid" id="productsSlider">
+                            @foreach($items as $item)
                                 <a href="{{ route('product.detail', $item->id) }}" class="product-card">
                                     <div class="product-image product-2">
                                         <img src="{{ asset('storage/' . $item->image) }}" alt="">
@@ -88,6 +89,7 @@
                                         </div>
                                     </div>
                                 </a>
+                            @endforeach
                         </div>
                     </div>
 

@@ -15,7 +15,8 @@
             </div>
         </div>
 
-        <form method="post" action="{{route('updateProduct', $item->id)}}" class="form-container" id="addProductForm" enctype="multipart/form-data">
+        <form method="post" action="{{route('updateProduct', $item->id)}}" class="form-container" id="addProductForm"
+              enctype="multipart/form-data">
             <!-- Basic Information -->
             @csrf
             <div class="form-section">
@@ -24,12 +25,13 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form-label required">Tên Sản Phẩm</label>
-                        <input type="text" class="form-input" placeholder="Nhập tên sản phẩm" name="name" value="{{$item->name}}">
+                        <input type="text" class="form-input" placeholder="Nhập tên sản phẩm" name="name"
+                               value="{{$item->name}}">
                     </div>
                 </div>
 
-                @foreach($item->product_variant as $value)
-                    <div id="price-wrapper">
+                <div id="price-wrapper">
+                    @foreach($item->product_variant as $value)
                         <div class="price-item">
                             <input type="hidden" name="variant_id[]" value="{{ $value->id }}">
 
@@ -45,9 +47,13 @@
                             <div style="padding-bottom: 15px">
                                 <h6>Loại tài khoản</h6>
                                 <select class="custom-select" name="type[]">
-                                    <option value="shared" {{ $value->type == 'shared' ? 'selected' : '' }}>Dùng chung</option>
-                                    <option value="private" {{ $value->type == 'private' ? 'selected' : '' }}>Dùng riêng</option>
-                                    <option value="owner" {{ $value->type == 'owner' ? 'selected' : '' }}>Chính chủ</option>
+                                    <option value="shared" {{ $value->type == 'shared' ? 'selected' : '' }}>Dùng chung
+                                    </option>
+                                    <option value="private" {{ $value->type == 'private' ? 'selected' : '' }}>Dùng
+                                        riêng
+                                    </option>
+                                    <option value="owner" {{ $value->type == 'owner' ? 'selected' : '' }}>Chính chủ
+                                    </option>
                                 </select>
                             </div>
 
@@ -59,7 +65,8 @@
 
                                 <div class="form-group">
                                     <label class="form-label">Giá Khuyến Mãi (VNĐ)</label>
-                                    <input type="number" class="form-input" name="sale_price[]" value="{{ $value->sale_price }}">
+                                    <input type="number" class="form-input" name="sale_price[]"
+                                           value="{{ $value->sale_price }}">
 
                                 </div>
                             </div>
@@ -71,7 +78,7 @@
                             <hr>
                         </div>
 
-                    </div>
+                </div>
                 @endforeach
 
                 <button type="button" class="btn btn-primary" onclick="addPriceItem()">
@@ -81,7 +88,8 @@
                 <div class="form-row full">
                     <div class="form-group">
                         <label class="form-label">Mô Tả Chi Tiết</label>
-                        <textarea class="form-textarea" placeholder="Nhập mô tả chi tiết về sản phẩm" style="min-height: 200px;" name="description">{{$item->description}}</textarea>
+                        <textarea class="form-textarea" placeholder="Nhập mô tả chi tiết về sản phẩm"
+                                  style="min-height: 200px;" name="description">{{$item->description}}</textarea>
                     </div>
                 </div>
             </div>
@@ -105,7 +113,8 @@
                     @if($item->image)
                         <div class="image-item old-image" data-image-path="{{ $item->image }}">
                             <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
-                            <button type="button" class="remove-image" onclick="removeOldImage(this, '{{ $item->image }}')">
+                            <button type="button" class="remove-image"
+                                    onclick="removeOldImage(this, '{{ $item->image }}')">
                                 &times;
                             </button>
                             <p class="image-name">Ảnh hiện tại</p>
@@ -117,7 +126,8 @@
                         @foreach(json_decode($item->images) as $image)
                             <div class="image-item old-image" data-image-path="{{ $image }}">
                                 <img src="{{ asset('storage/' . $image) }}" alt="{{ $item->name }}">
-                                <button type="button" class="remove-image" onclick="removeOldImage(this, '{{ $image }}')">
+                                <button type="button" class="remove-image"
+                                        onclick="removeOldImage(this, '{{ $image }}')">
                                     &times;
                                 </button>
                                 <p class="image-name">Ảnh hiện tại</p>
@@ -158,7 +168,7 @@
     </main>
 @endsection
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const imageUpload = document.getElementById('imageUpload');
         const imagePreview = document.getElementById('imagePreview');
         const deletedImagesInput = document.getElementById('deletedImages');
@@ -174,7 +184,7 @@
         let deletedImages = [];
 
         // Xử lý thêm ảnh mới
-        imageUpload.addEventListener('change', function(e) {
+        imageUpload.addEventListener('change', function (e) {
             const files = Array.from(e.target.files);
 
             if (files.length === 0) return;
@@ -208,7 +218,7 @@
                 // Tạo FileReader để đọc file
                 const reader = new FileReader();
 
-                reader.onload = function(event) {
+                reader.onload = function (event) {
                     // Tạo wrapper cho ảnh mới
                     const imageWrapper = document.createElement('div');
                     imageWrapper.className = 'image-item new-image';
@@ -229,7 +239,7 @@
                     removeBtn.className = 'remove-image';
                     removeBtn.innerHTML = '&times;';
                     removeBtn.type = 'button';
-                    removeBtn.onclick = function() {
+                    removeBtn.onclick = function () {
                         // Xóa file khỏi mảng
                         newFiles = newFiles.filter(f => f.name !== file.name);
 
@@ -293,6 +303,7 @@
         const clone = firstItem.cloneNode(true);
 
         // Clear value khi clone
+        clone.querySelector('input[name="variant_id[]"]')?.remove();
         clone.querySelectorAll('input').forEach(input => input.value = '');
         clone.querySelectorAll('select').forEach(select => select.selectedIndex = 0);
 
@@ -300,9 +311,11 @@
     }
 
     function removeItem(btn) {
-        const wrapper = document.getElementById('price-wrapper');
-        if (wrapper.children.length > 1) {
-            btn.closest('.price-item').remove();
+        const item = btn.closest('.price-item');
+        const wrapper = item.parentElement;
+
+        if (wrapper.querySelectorAll('.price-item').length > 1) {
+            item.remove();
         }
     }
 </script>
@@ -336,7 +349,7 @@
     }
 
     .image-item:hover {
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
     .image-item img {

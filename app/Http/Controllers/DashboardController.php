@@ -83,9 +83,19 @@ class DashboardController extends Controller
         }
 
         $item->update($data);
+// delete product variant
+        $existingVariantIds = $item->product_variant()->pluck('id')->toArray();
+        $formVariantIds = array_filter($request->variant_id ?? []);
+
+        // DELETE
+        $deleteIds = array_diff($existingVariantIds, $formVariantIds);
+        if (!empty($deleteIds)) {
+            $item->product_variant()->whereIn('id', $deleteIds)->delete();
+        }
+
         foreach ($request->duration as $key => $value) {
-            if (!empty($requet->variant_id[$key])){
-                $item->product_variant()->where('id', $requet->variant_id[$key])->update([
+            if (!empty($request->variant_id[$key])){
+                $item->product_variant()->where('id', $request->variant_id[$key])->update([
                     'duration' => $value,
                     'type' => $request->type[$key],
                     'price' => $request->price[$key],

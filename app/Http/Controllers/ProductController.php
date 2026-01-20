@@ -16,7 +16,8 @@ class ProductController extends Controller
             ->withMax('product_variant', 'sale_price')
             ->withMin('product_variant', 'price')
             ->withMax('product_variant', 'price')
-        ->get();
+        ->get()
+        ->groupBy('category_relation');
         return view('product', ['products' => $products]);
     }
 }
