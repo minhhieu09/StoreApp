@@ -511,6 +511,99 @@ body {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     opacity: 0.7;
 }
+.products-section {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #2d2d2d;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.product-image {
+    width: 100%;
+    background: linear-gradient(135deg, #ff6ec4 0%, #ff9a9e 100%);
+    position: relative;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-name {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #2d2d2d;
+}
+
+.product-price {
+    font-size: 24px;
+    color: #c94b4b;
+    font-weight: bold;
+}
+
+/* Banner CTA */
+.cta-banner {
+    background: linear-gradient(135deg, #4a4a4a 0%, #2d2d2d 100%);
+    padding: 80px 20px;
+    text-align: center;
+    color: white;
+    margin: 80px 0;
+}
+
+.cta-banner h2 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.cta-banner p {
+    font-size: 18px;
+    color: #b0b0b0;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 40px;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+.cta-button:hover {
+    background: white;
+    color: #2d2d2d;
+}
+
 
 /* ===== FIXED BUTTONS ===== */
 .scroll-top {
