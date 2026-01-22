@@ -62,28 +62,19 @@
 
         <section class="products-section">
             <h2 class="section-title">Sản Phẩm Bán Chạy</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image"></div>
-                    <div class="product-info">
-                        <div class="product-name">Gấu Bông Size M</div>
-                        <div class="product-price">299.000đ</div>
+
+            <div class="products-grid-item">
+                @foreach($bestSellerProducts as $item)
+                    <div class="product-card-home">
+                        <div class="product-image product-2">
+                            <img src="{{ asset('storage/' . $item->image) }}" alt="">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">{{ $item->name }}</div>
+                            <div class="product-price">{{ $item->price }}</div>
+                        </div>
                     </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image"></div>
-                    <div class="product-info">
-                        <div class="product-name">Gấu Bông Size L</div>
-                        <div class="product-price">399.000đ</div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image"></div>
-                    <div class="product-info">
-                        <div class="product-name">Gấu Bông Size XL</div>
-                        <div class="product-price">499.000đ</div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </section>
 
@@ -97,28 +88,19 @@
         <!-- Products Section 2 -->
         <section class="products-section">
             <h2 class="section-title">Sản Phẩm Mới Nhất</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image"></div>
-                    <div class="product-info">
-                        <div class="product-name">Gấu Teddy Bear</div>
-                        <div class="product-price">350.000đ</div>
+
+            <div class="products-grid-item">
+                @foreach($newestProducts as $item)
+                    <div class="product-card-home">
+                        <div class="product-image">
+                            <img src="{{ asset('storage/' . $item->image) }}" alt="">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">{{ $item->name }}</div>
+                            <div class="product-price">{{ $item->price }}</div>
+                        </div>
                     </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image"></div>
-                    <div class="product-info">
-                        <div class="product-name">Gấu Brown Bear</div>
-                        <div class="product-price">450.000đ</div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image"></div>
-                    <div class="product-info">
-                        <div class="product-name">Gấu Panda</div>
-                        <div class="product-price">550.000đ</div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </section>
     </main>

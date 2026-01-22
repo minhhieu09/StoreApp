@@ -7,10 +7,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
-/*Product*/
-Route::get('/', function () {
-    return view('home');
-});
+
+Route::get('/home', [ProductController::class, 'home'])->name('home');
 
 Route::get('/category',[CategoryController::class,'index']);
 Route::get('/detail-bill',[BillController::class,'detailBill']);

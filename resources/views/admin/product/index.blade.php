@@ -63,7 +63,7 @@
                         <td>
                             <div class="product-title">
                                 <img src="{{ asset('storage/' . $item->image) }}" alt="Product"
-                                     class="product-image">
+                                     class="admin-product-image">
                                 <span class="product-title-text">{{$item->name}}</span>
                             </div>
                         </td>

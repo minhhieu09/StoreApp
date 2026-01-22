@@ -523,19 +523,11 @@ body {
     color: #2d2d2d;
 }
 
-.products-grid {
+.products-grid-item {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     margin-bottom: 80px;
-}
-
-.product-card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .product-card:hover {
@@ -743,6 +735,16 @@ body {
 .admin-header h1 {
     font-size: 28px;
     color: #2c3e50;
+}
+
+.admin-product-image{
+    width: 200px;
+    aspect-ratio: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 .header-actions {
@@ -1250,22 +1252,45 @@ tbody tr:hover {
 }
 
 .product-card {
+    text-decoration: none;
     min-width: calc(20% - 12.8px);
     width: calc(20% - 12.8px);
     background: white;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
 }
 
+.product-card-home {
+    text-decoration: none;
+    text-align: center;
+    width: auto;
+    height: auto;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card-home:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
 .product-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
 }
 
 .product-image {
@@ -1784,14 +1809,6 @@ h1 {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
-}
-
-.product-card {
-    text-decoration: none;
-    background: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    cursor: pointer;
 }
 
 .product-card-image {

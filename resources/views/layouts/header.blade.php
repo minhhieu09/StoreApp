@@ -19,7 +19,7 @@
             <a class="navbar-brand text-light" href="{{url('/')}}"><img src="{{asset('images/logo.png')}}" style="width: 60px"
                                                              alt="">Bear Shop</a>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <a href="{{url('/')}}" class="nav-link">Trang Chủ</a>
+                <a href="{{url('/home')}}" class="nav-link">Trang Chủ</a>
                 <a href="{{url('')}}" class="nav-link">Giới thiệu</a>
                 <a href="{{url('/detail-bill')}}" class="nav-link">Uy tín</a>
                 <a href="{{url('/product')}}" class="nav-link">Sản phẩm</a>
