@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\BillImageModel;
 use App\Models\CategoryModel;
 use App\Models\Product;
 use App\Models\ProductVariants;
 use Illuminate\Http\Request;
+use Illuminate\Session\Store;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Tests\Integration\Database\EloquentHasManyThroughTest\Category;
 
@@ -117,6 +119,45 @@ class DashboardController extends Controller
         $item = Product::findOrFail($id);
         $item->delete();
         return redirect()->route('adminProduct')->with('success', 'Product deleted successfully');
+    }
+
+//    Bill Image
+    public function bill(){
+        $images = BillImageModel::latest()->paginate(20);
+        return view('admin.bill.index', compact('images'));
+    }
+    public function createImage(){
+        return view('admin.bill.create');
+    }
+
+//    Save images
+    public function storeImage(Request $request){
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+
+            $filename = time() . '_' . $file->getClientOriginalName();
+
+            $path = $file->storeAs('images', $filename, 'public');
+
+            // Lưu vào database
+            BillImageModel::create([
+                'path' => $path,
+                'filename' => $filename,
+            ]);
+            return redirect()->route('bill')->with('success', 'Image created successfully');
+
+        }
+        return back()->with('error', 'Image upload failed');
+    }
+
+    public function deleteImage(BillImageModel $image){
+        if ($image->path && Storage::disk('public')->exists($image->path)){
+            Storage::disk('public')->delete($image->path);
+        }
+
+        //Delete Image
+        $image->delete();
+        return redirect()->route('bill')->with('success', 'Image deleted successfully');
     }
 
 }

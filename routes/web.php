@@ -42,5 +42,11 @@ Route::prefix('admin')->group(function () {
         Route::get('/edit/{id}', [DashboardController::class, 'edit'])->name('editProduct');
         Route::post('/update/{id}', [DashboardController::class, 'update'])->name('updateProduct');
         Route::get('/delete/{id}', [DashboardController::class, 'delete'])->name('deleteProduct');
+//      /*Bill Image*/
+        Route::get('/bill', [DashboardController::class, 'bill'])->name('bill');
+        Route::get('/create-image', [DashboardController::class, 'createImage'])->name('createImage');
+        Route::post('/store-image', [DashboardController::class, 'storeImage'])->name('storeImage');
+        Route::delete('/delete-image/{image}', [DashboardController::class, 'deleteImage'])->name('deleteImage');
+
     });
 });

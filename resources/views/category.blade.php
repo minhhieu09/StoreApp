@@ -41,9 +41,9 @@
 
         <div class="product-info">
             <div class="brand">
-                <a href="{{route('product')}}" style="text-decoration: none ; color: #666666" >Trang chủ / </a>{{$item->category_relation->name ?? ""}}</div>
+                <a href="{{route('product')}}" style="text-decoration: none ; color: #666666" >Trang chủ / </a>{{$item->category_relation->name ?? ""}}
+            </div>
             <h1>{{$item->name}}</h1>
-
             <div class="price-section">
                 <span class="old-price">
                     @if($item->product_variant_min_price == $item->product_variant_max_price)

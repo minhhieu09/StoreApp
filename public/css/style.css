@@ -578,6 +578,12 @@ body {
     margin-bottom: 30px;
 }
 
+.img-banner img{
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+}
+
 .cta-button {
     display: inline-block;
     padding: 15px 40px;
@@ -1924,6 +1930,12 @@ body {
     padding: 10px;
 }
 
+.photo-carousel img{
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
 .photo-carousel::-webkit-scrollbar {
     display: none;
 }
@@ -2024,7 +2036,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(0, 0, 0, 0.55);
     z-index: 9999;
     align-items: center;
     justify-content: center;

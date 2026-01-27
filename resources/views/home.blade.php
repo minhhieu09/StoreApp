@@ -71,7 +71,14 @@
                         </div>
                         <div class="product-info">
                             <div class="product-name">{{ $item->name }}</div>
-                            <div class="product-price">{{ $item->price }}</div>
+                            <div class="product-price">
+                                @if($item->product_variant_min_sale_price == $item->product_variant_max_sale_price)
+                                    {{ number_format($item->product_variant_min_sale_price) }} đ
+                                @else
+                                    {{ number_format($item->product_variant_min_sale_price) }} -
+                                    {{ number_format($item->product_variant_max_sale_price) }} đ
+                                @endif
+                            </div>
                         </div>
                     </div>
                 @endforeach
@@ -79,10 +86,8 @@
         </section>
 
         <!-- CTA Banner -->
-        <section class="cta-banner">
-            <h2>Bắt đầu dự án với 4S Design</h2>
-            <p>Liên hệ với 4S Design để được tư vấn trực tiếp</p>
-            <a href="#contact" class="cta-button">LIÊN HỆ</a>
+        <section class="img-banner">
+            <img src="{{asset('images/banner.jpg')}}">
         </section>
 
         <!-- Products Section 2 -->
@@ -91,13 +96,21 @@
 
             <div class="products-grid-item">
                 @foreach($newestProducts as $item)
+
                     <div class="product-card-home">
                         <div class="product-image">
                             <img src="{{ asset('storage/' . $item->image) }}" alt="">
                         </div>
                         <div class="product-info">
                             <div class="product-name">{{ $item->name }}</div>
-                            <div class="product-price">{{ $item->price }}</div>
+                            <div class="product-price">
+                                @if($item->product_variant_min_sale_price == $item->product_variant_max_sale_price)
+                                    {{ number_format($item->product_variant_min_sale_price) }} đ
+                                @else
+                                    {{ number_format($item->product_variant_min_sale_price) }} -
+                                    {{ number_format($item->product_variant_max_sale_price) }} đ
+                                @endif
+                            </div>
                         </div>
                     </div>
                 @endforeach
